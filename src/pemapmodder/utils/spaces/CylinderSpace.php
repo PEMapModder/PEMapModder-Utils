@@ -2,7 +2,10 @@
 
 namespace pemapmodder\utils\spaces;
 
-class CylinderSpace extends Space{
+/**
+ * Cylinder space object with vertical axis as Y
+*/
+class YCylinderSpace extends Space{
 	/**
 	 * Constructs a new CylinderSpace object
 	 * 
