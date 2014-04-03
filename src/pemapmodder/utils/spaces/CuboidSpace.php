@@ -35,19 +35,27 @@ class CuboidSpace extends Space{
 				and ($this->cookedStart->z <= $pos->z and $this->cookedEnd->z >= $pos->z)
 				and ($pos->level->getName() === $this->rawEnd->level->getName());
 	}
-	public function setBlocks(Block $block){
-		$cnt = 0;
-		$this->recook();
-		$level = $this->rawEnd->level;
+	protected function getBlocksList($get = false){
+		$list = array();
 		for($x = $this->cookedStart->x; $x <= $this->cookedEnd->x; $x++){
 			for($y = $this->cookedStart->y; $y <= $this->cookedEnd->y; $y++){
 				for($z = $this->cookedStart->z; $z <= $this->cookedEnd->z; $z++){
 					$v = new Vector3($x, $y, $z);
-					if(!$this->isIdentical($level->getBlock($v)->getID(), $block->getID(), true, true, true)){
-						$cnt++;
-						$level->setBlock($v, $block, false, false, true);
-					}
+					if($get) $list[] = $this->rawEnd->level->getBlock($v);
+					else $list[] = $v;
 				}
+			}
+		}
+		return $list;
+	}
+	public function setBlocks(Block $block){
+		$cnt = 0;
+		$this->recook();
+		$level = $this->rawEnd->level;
+		foreach($this->getBlocksList() as $v){
+			if(!$this->isIdentical($level->getBlock($v)->getID(), $block->getID(), true, true, true)){
+				$cnt++;
+				$level->setBlock($v, $block, false, false, true);
 			}
 		}
 		return $cnt;

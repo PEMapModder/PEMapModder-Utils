@@ -16,6 +16,7 @@ abstract class Space{
 	 * @param Block $block replace all blocks in this Space to this.
 	 * @return int count of the number of blocks changed.
 	*/
+	protected abstract function getBlocksList($get = false);
 	public abstract function setBlocks(Block $block);
 	/**
 	 * Clear all blocks.<br>Subsitution of <code>Space->setBlocks(new AirBlock());</code>

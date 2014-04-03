@@ -17,18 +17,19 @@ class CylinderSpace extends Space{
 			$this->radius *= (0 - 1);
 		$this->topY = $baseCentre->y + $height - 1;
 	}
-	protected function getBlocksList(){
+	protected function getBlocksList($get = false){
 		$list = array();
 		for($y = $this->baseCentre->y; $y <= $this->topY; $y++){
 			for($x = $this->baseCentre->x - $this->radius; $x <= $this->baseCentre->x + $this->radius; $x++){
 				for($z = $this->baseCentre->z - $this->radius; $z <= $this->baseCentre->z + $this->radius; $z++){
 					$v = new Vector3($x, $y, $z);
-					if($v->distance(new Vector3($this->baseCentre->x, $y, $this->baseCentre->z)) <= $this->radius)
-						$list[] = $v;
+					if($v->distance(new Vector3($this->baseCentre->x, $y, $this->baseCentre->z)) <= $this->radius){
+						if($get) $list[] = $this->baseCentre->level->getBlock($v);
+						else $list[] = $v;
+					}
 				}
 			}
 		}
 		return $list;
 	}
-	
 }
