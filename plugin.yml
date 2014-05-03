@@ -1,6 +1,6 @@
-name: n
+name: PEMapModderUtils
 author: PEMapModder
-main: pemapmodder\utils\DummyPlugin;
+main: pemapmodder\utils\DummyPlugin
 version: 0
 api: [1.0.0]
 load: startup
