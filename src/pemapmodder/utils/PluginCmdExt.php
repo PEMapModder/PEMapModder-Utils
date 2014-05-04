@@ -4,7 +4,9 @@ namespace pemapmodder\utils;
 
 use pocketmine\command\CommandExecutor as CmdExe;
 use pocketmine\command\CommandSender as Issuer;
+use pocketmine\command\CommandMap;
 use pocketmine\utils\TextFormat as Font;
+
 use pocketmine\command\PluginCommand as ParentClass;
 use pocketmine\plugin\Plugin;
 
