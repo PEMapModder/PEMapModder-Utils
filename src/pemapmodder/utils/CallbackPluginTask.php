@@ -13,8 +13,13 @@ class CallbackPluginTask extends PluginTask{
 		$this->useArray = $asArray;
 	}
 	public function onRun($t){
-		if($this->useArray)
+		if($this->useArray === true)
 			call_user_func_array($this->cb, $this->data);
-		else call_user_func($this->cb, $this->data);
+		elseif($this->useArray === 2){
+			call_user_func($this->cb, $t);
+		}
+		else{
+			call_user_func($this->cb, $this->data);
+		}
 	}
 }
