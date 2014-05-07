@@ -10,6 +10,8 @@ class CylinderSpace extends Space{
 	const X = 0;
 	const Y = 1;
 	const Z = 2;
+	
+	public $centre, $axis, $radius, $height;
 	/**
 	 * Constructs a new CylinderSpace object.
 	 * @param int $axis

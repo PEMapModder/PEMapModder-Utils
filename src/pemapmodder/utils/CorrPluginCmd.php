@@ -7,6 +7,7 @@ use pocketmine\command\CommandMap;
 
 class CorrPluginCmd extends PluginCmdExt{
 	public function register(CommandMap $map){
-		Command::register($map);
+		$this->doParent = true;
+		parent::register($map);
 	}
 }
